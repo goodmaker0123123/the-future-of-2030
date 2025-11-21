@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 22nd Century Prophet | 5-Year Forecast</title>
+    <meta name="description" content="Receive your 5-Year Future Prophecy.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=AX2gudKNEUw3-mg2wkiMBQBzQjyRjybwMeQQmfSWnHPRX-NHUcx5yuSCgYdJiNTtysGnI9a7Pc1gs0iC&currency=USD"></script>
+
+    <style>
+        /* CSS RESET & GLOBAL VARS */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f0f0f;
+            --text-color: #ffffff;
+            --accent-color: #00f3ff; /* Cyan Glow */
+            --sub-text: #888888;
+            --error-color: #ff4d4d;
+            --input-bg: #1a1a1a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding-bottom: 50px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .hero p {
+            color: var(--sub-text);
+            font-size: 0.9rem;
+        }
+
+        /* FORM STYLING */
+        .question-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            border: 1px solid #222;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .question-card:focus-within {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+
+        label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .subtext {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--sub-text);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        input[type="text"], 
+        input[type="number"], 
+        input[type="email"], 
+        textarea, 
+        input[type="file"] {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid #333;
+            color: white;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 4px;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        textarea { resize: vertical; min-height: 100px; }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-color);
+            background: #222;
+        }
+
+        .validation-error {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* PAYMENT SECTION */
+        .payment-section {
+            margin-top: 40px;
+            text-align: center;
+            background: #0a0a0a;
+            padding: 30px;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        #paypal-button-container {
+            margin-top: 20px;
+        }
+
+        /* SUCCESS OVERLAY / UI */
+        .success-view, .loading-overlay {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            display: none; /* Managed by JS */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .workbook-banner {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(45deg, #1a1a1a, #000);
+            border: 1px solid gold; 
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.2s;
+        }
+        
+        .workbook-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-form-container">
+        <div class="hero">
+            <h1>The 22nd Century Prophet</h1>
+            <p>Identify the flaw. See the future. Reconstruct reality.</p>
+        </div>
+
+        <form id="prophecy-form">
+            <div class="question-card">
+                <label>What is your name?</label>
+                <span class="subtext">(This name will be inscribed in the prophecies of the 22nd century.)</span>
+                <input type="text" id="name" required placeholder="Enter your full name">
+                <div class="validation-error">Name is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>How old are you?</label>
+                <span class="subtext">(The more specific you are, the more accurate the prediction will be.)</span>
+                <input type="number" id="age" required placeholder="e.g., 28">
+                <div class="validation-error">Age is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Recent condition</label>
+                <span class="subtext">(The more specific you are, the more accurate the prediction will be.)</span>
+                <textarea id="condition" required placeholder="Describe your physical and mental state..."></textarea>
+                <div class="validation-error">This field is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Lack</label>
+                <span class="subtext">You might smile and talk to others, but what’s the 'future failure' you’re most afraid of when you’re alone?</span>
+                <textarea id="lack" required placeholder="I feel I am lacking..."></textarea>
+                <div class="validation-error">This field is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Desire</label>
+                <span class="subtext">If you suddenly got a billion won tomorrow, who would you want to cut off first or what would you want to quit?</span>
+                <textarea id="desire" required placeholder="I would immediately quit..."></textarea>
+                <div class="validation-error">This field is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Habit</label>
+                <span class="subtext">What is one habit that you believe is slowly ruining you, yet you are unable to break?</span>
+                <textarea id="habit" required placeholder="My worst habit is..."></textarea>
+                <div class="validation-error">This field is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Fear</label>
+                <span class="subtext">What is it that you fear the most right now?</span>
+                <textarea id="fear" required placeholder="My deepest fear..."></textarea>
+                <div class="validation-error">This field is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Upload Photo</label>
+                <span class="subtext">Please upload a current frontal photo to check your face five years from now. The original unedited version is more accurate.</span>
+                <input type="file" id="photo" accept="image/*" required>
+                <div class="validation-error">Photo is required.</div>
+            </div>
+
+            <div class="question-card">
+                <label>Email Address</label>
+                <span class="subtext">Where should we send your prophecy? example@example.com (Any disadvantage caused by entering an incorrect email is the customer's responsibility.)</span>
+                <input type="email" id="email" required placeholder="your@email.com">
+                <div class="validation-error">Valid email is required.</div>
+            </div>
+        </form>
+
+        <div class="payment-section">
+            <h2>Prophecy Confirmation</h2>
+            <span class="price-tag">5-Year Future Prophecy Report ($4.99)</span>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <h3>Analyzing Timeline...</h3>
+        <p style="color:#ccc; margin-top:10px;">Connecting to the Prophecy Node</p>
+    </div>
+
+    <div class="container success-view" id="success-view">
+        <div class="hero">
+            <h1 style="color: var(--accent-color);">Prophecy Inscribed.</h1>
+            <p style="margin-bottom:20px;">Your data has been successfully transmitted to the analysis engine.</p>
+            <p>Your customized 5-year report will arrive in your email shortly.</p>
+        </div>
+
+        <a href="workbook.html" target="_blank" class="workbook-banner">
+            Need a concrete plan? <br>
+            <span style="font-size:0.8em; color: white; display:block; margin-top:5px;">>> View the 90-Day Workbook</span>
+        </a>
+    </div>
+
+    <script>
+        // Image Upload Configuration
+        // Replace these with your actual Cloudinary details
+        const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dejphkglz/image/upload'; // e.g. https://api.cloudinary.com/v1_1/your-cloud-name/image/upload
+        const UPLOAD_PRESET = '4thbusiness'; 
+
+        // Validation Helper
+        function validateForm() {
+            let isValid = true;
+            const ids = ['name', 'age', 'condition', 'lack', 'desire', 'habit', 'fear', 'email', 'photo'];
+            
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                const err = el.parentElement.querySelector('.validation-error');
+                if (!el.value) {
+                    err.style.display = 'block';
+                    el.style.borderColor = '#ff4d4d';
+                    isValid = false;
+                } else {
+                    err.style.display = 'none';
+                    el.style.borderColor = '#333';
+                }
+            });
+            return isValid;
+        }
+
+        // PayPal Integration
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'gold',
+                shape:  'rect',
+                label:  'pay'
+            },
+            // Validate form on click
+            onClick: function(data, actions) {
+                if (!validateForm()) {
+                    alert("Please fill in all fields before proceeding.");
+                    return actions.reject();
+                }
+                return actions.resolve();
+            },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '4.99'
+                        },
+                        description: "5-Year Future Prophecy Report"
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                // Capture the order first
+                return actions.order.capture().then(async function(details) {
+                    
+                    // 1. Show Loading Animation immediately
+                    document.getElementById('loading-overlay').style.display = 'flex';
+
+                    try {
+                        // 2. Upload Image to Cloud Storage (Cloudinary)
+                        const fileInput = document.getElementById('photo');
+                        const file = fileInput.files[0];
+                        const formData = new FormData();
+                        
+                        formData.append('file', file);
+                        formData.append('upload_preset', UPLOAD_PRESET);
+
+                        const uploadResponse = await fetch(CLOUDINARY_URL, {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (!uploadResponse.ok) {
+                            throw new Error("Image upload to server failed.");
+                        }
+
+                        const uploadData = await uploadResponse.json();
+                        const imageUrl = uploadData.secure_url || uploadData.url;
+
+                        // 3. Prepare Payload (Sending URL instead of Base64)
+                        const payload = {
+                            name: document.getElementById('name').value,
+                            age: document.getElementById('age').value,
+                            condition: document.getElementById('condition').value,
+                            lack: document.getElementById('lack').value,
+                            desire: document.getElementById('desire').value,
+                            habit: document.getElementById('habit').value,
+                            fear: document.getElementById('fear').value,
+                            email: document.getElementById('email').value,
+                            photo_url: imageUrl, // Changed from photo_base64 to photo_url
+                            orderID: data.orderID,
+                            payerName: details.payer.name.given_name
+                        };
+
+                        // 4. Send to Make Webhook
+                        const makeResponse = await fetch('https://hook.us2.make.com/tzql9fi9f2wddt74nt5pniwblopqm1ti', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if(makeResponse.ok) {
+                            // 5. Show Success Screen
+                            document.getElementById('loading-overlay').style.display = 'none';
+                            document.getElementById('main-form-container').style.display = 'none';
+                            document.getElementById('success-view').style.display = 'block';
+                        } else {
+                            throw new Error("Webhook submission failed.");
+                        }
+
+                    } catch (error) {
+                        console.error('Process Error:', error);
+                        alert('Error: ' + error.message + ' Please contact support if payment was deducted.');
+                        document.getElementById('loading-overlay').style.display = 'none';
+                    }
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>

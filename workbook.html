@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90-Day Action Plan Workbook | The 22nd Century Prophet</title>
+    <!-- PayPal SDK (Same Client ID) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AX2gudKNEUw3-mg2wkiMBQBzQjyRjybwMeQQmfSWnHPRX-NHUcx5yuSCgYdJiNTtysGnI9a7Pc1gs0iC&currency=USD"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-white: #ffffff;
+            --gold-accent: #D4AF37;
+            --border-dim: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 40px 0;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--gold-accent);
+        }
+
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #222;
+            border-radius: 4px;
+        }
+
+        .product-desc {
+            background: #0f0f0f;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        .product-desc h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--gold-accent);
+        }
+
+        /* BUY FORM */
+        .buy-section {
+            background: #121212;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-dim);
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .price {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        /* STATES */
+        .loading-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 99;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .spinner-gold {
+            width: 50px; height: 50px;
+            border: 3px solid #222;
+            border-top: 3px solid var(--gold-accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .price { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper" id="sales-content">
+        <h1>You saw the future. <br>Now, <span class="highlight">become its creator.</span></h1>
+
+        <div class="image-container">
+            <!-- Note: Using provided OneDrive specific URL 여기랑 밑에 이미지 수정 해야함 -->
+            <img src="https://res.cloudinary.com/dejphkglz/image/upload/v1763749001/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2025-11-21_230322_furh7o.png" alt="Workbook Main Cover">
+        </div>
+
+        <div class="product-desc">
+            <h2>107-Page Action Plan Workbook</h2>
+            <p>Prediction requires preparation. This comprehensive workbook allows you to restructure your habits, audit your time, and reverse-engineer your future success based on the prophecy provided. This is not just reading material; it is a tactical manual.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://res.cloudinary.com/dejphkglz/image/upload/v1763749001/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2025-11-21_230333_owschp.png" alt="Workbook Internal Preview">
+        </div>
+
+        <div class="buy-section">
+            <span class="price">Only $9.98</span>
+            
+            <div class="input-group">
+                <label style="display:block; margin-bottom:5px; font-weight:bold;">Your Email Address</label>
+                <input type="email" id="wb-email" placeholder="Enter email for delivery" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="privacy" required>
+                <label for="privacy">I agree to the Privacy Policy & Purchase Terms.</label>
+            </div>
+
+            <div id="paypal-workbook-container"></div>
+        </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading-modal" id="loading-modal">
+        <div class="spinner-gold"></div>
+        <h3 style="color:white; font-weight:300;">Processing Order...</h3>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="wrapper success-msg" id="success-msg">
+        <h1 class="highlight">Workbook Sent.</h1>
+        <p style="font-size:1.2rem;">We have dispatched the manual to your email.</p>
+        <p style="color:#777; margin-top:10px;">Check your inbox (and spam folder) in 2 minutes.</p>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'black',
+                shape:  'rect',
+                label:  'pay',
+                height: 45
+            },
+            onClick: function(data, actions) {
+                const email = document.getElementById('wb-email').value;
+                const checked = document.getElementById('privacy').checked;
+                
+                if(!email || !email.includes('@')) {
+                    alert('Please enter a valid email address.');
+                    return actions.reject();
+                }
+                if(!checked) {
+                    alert('You must agree to the policies to proceed.');
+                    return actions.reject();
+                }
+                return actions.resolve();
+            },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '9.98'
+                        },
+                        description: "107-Page Action Plan Workbook"
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    
+                    // UI Feedback
+                    document.getElementById('loading-modal').style.display = 'flex';
+
+                    const payload = {
+                        email: document.getElementById('wb-email').value,
+                        product: "workbook_107_pages",
+                        orderID: data.orderID,
+                        payerName: details.payer.name.given_name
+                    };
+
+                    // Send to Workbook Webhook
+                    fetch('https://hook.us2.make.com/teg23odp6aig8fophc2vokygyc9cq4wk', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(res => {
+                        if(res.ok) {
+                            document.getElementById('loading-modal').style.display = 'none';
+                            document.getElementById('sales-content').style.display = 'none';
+                            document.getElementById('success-msg').style.display = 'block';
+                        } else {
+                            throw new Error('Webhook Fail');
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        // Fallback success logic if webhook hiccups (ensures better UX)
+                        alert('Order confirmed. Your workbook is being prepared for dispatch.');
+                        document.getElementById('loading-modal').style.display = 'none';
+                        document.getElementById('sales-content').style.display = 'none';
+                        document.getElementById('success-msg').style.display = 'block';
+                    });
+                });
+            }
+        }).render('#paypal-workbook-container');
+    </script>
+
+</body>
+</html>
